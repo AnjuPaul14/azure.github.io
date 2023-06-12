@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>REST API Example</title>
+</head>
+<body>
+    <button onclick="callAPI()">Call API</button>
+
+    <script>
+        function callAPI() {
+            // Define the endpoint URL
+            const endpointUrl = 'http://97ec29bf-9f47-4cdc-9740-63afe83603f7.uksouth.azurecontainer.io/score';
+
+            // Define the request headers (if required)
+            const headers = {
+                'Content-Type': 'application/json',
+                // Add any other headers as needed
+            };
+
+            // Define the request payload (if required)
+            const payload = {
+                // Add your payload data here
+                'data':[1068, 1078]
+            };
+
+            // Make the API call using the fetch API
+            fetch(endpointUrl, {
+                method: 'POST', // or 'GET', 'PUT', 'DELETE', etc. depending on your API
+                headers: headers,
+                body: JSON.stringify(payload), // Convert payload to JSON string if necessary
+            })
+            .then(response => response.json()) // Parse response as JSON
+            .then(data => {
+                // Process the API response data
+                console.log(data);
+                // Handle the data and update your web page accordingly
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the API call
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>
